@@ -1,0 +1,194 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {
+        "id": "view-in-github",
+        "colab_type": "text"
+      },
+      "source": [
+        "<a href=\"https://colab.research.google.com/github/abhiramyadav03/Dripping-Blues-Penetration-Test/blob/main/python_sequencetype_list\" target=\"_parent\"><img src=\"https://colab.research.google.com/assets/colab-badge.svg\" alt=\"Open In Colab\"/></a>"
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[10,20,30,40,4.4,0.3]\n",
+        "print(a[5])\n",
+        "print(a[-3])"
+      ],
+      "metadata": {
+        "id": "E4BRC1kT5WVg",
+        "outputId": "d059f7f1-32c8-4083-d9f7-7f36e0469bdb",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 30,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "0.3\n",
+            "40\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[10,20,30,30,40,30,30,30]\n",
+        "'''a.index(30)\n",
+        "a.count(30)\n",
+        "b=a.copy()'''\n",
+        "b.index(10)"
+      ],
+      "metadata": {
+        "id": "_5HrFKkE-QFX",
+        "outputId": "599024fc-348f-4e00-913e-08ebe36b4a93",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 31,
+      "outputs": [
+        {
+          "output_type": "execute_result",
+          "data": {
+            "text/plain": [
+              "3"
+            ]
+          },
+          "metadata": {},
+          "execution_count": 31
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[10,30,20,40,404,30]\n",
+        "b=a.copy()\n",
+        "print(a)\n",
+        "print(b)\n",
+        "b[1]=21\n",
+        "print(a)\n",
+        "print(b)"
+      ],
+      "metadata": {
+        "id": "BzocgqETBaV4",
+        "outputId": "ba9a08ef-e08c-4f55-de93-12b30f5c3120",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 32,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[10, 30, 20, 40, 404, 30]\n",
+            "[10, 30, 20, 40, 404, 30]\n",
+            "[10, 30, 20, 40, 404, 30]\n",
+            "[10, 21, 20, 40, 404, 30]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[10,20,30]\n",
+        "a.append(40)\n",
+        "print(a)"
+      ],
+      "metadata": {
+        "id": "R5Nt-XsBD2zn",
+        "outputId": "3cda6293-797f-4469-c73b-1913dd6fd1b2",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 33,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[10, 20, 30, 40]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[10,30,40]\n",
+        "a.insert(1,20)\n",
+        "print(a)\n"
+      ],
+      "metadata": {
+        "id": "mSVOT-ckEBaB",
+        "outputId": "254e0ab2-0e78-44ce-93a7-6b19501bfd96",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 34,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[10, 20, 30, 40]\n"
+          ]
+        }
+      ]
+    },
+    {
+      "cell_type": "code",
+      "source": [
+        "a=[10,20,30]\n",
+        "b=[50,60,70]\n",
+        "b.extend(a)\n",
+        "print(a)\n",
+        "print(b)"
+      ],
+      "metadata": {
+        "id": "8iCPh2fCEQY_",
+        "outputId": "1c37bf92-a01d-497e-f465-e8d3b2514989",
+        "colab": {
+          "base_uri": "https://localhost:8080/"
+        }
+      },
+      "execution_count": 35,
+      "outputs": [
+        {
+          "output_type": "stream",
+          "name": "stdout",
+          "text": [
+            "[10, 20, 30]\n",
+            "[50, 60, 70, 10, 20, 30]\n"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "colab": {
+      "name": "Welcome To Colab",
+      "toc_visible": true,
+      "provenance": [],
+      "include_colab_link": true
+    },
+    "kernelspec": {
+      "display_name": "Python 3",
+      "name": "python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 0
+}
