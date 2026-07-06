@@ -1,174 +1,498 @@
-# 🔎 Dripping Blues – Penetration Testing Project
+<div align="center">
 
-## 📌 Project Overview
+# 🔍 Dripping Blues – Penetration Testing Project
 
-This project demonstrates a structured penetration testing process performed against a vulnerable Linux machine in a controlled lab environment.
+### Discover • Enumerate • Exploit • Analyze • Report
 
-The objective was to identify exposed services, exploit misconfigurations, retrieve sensitive files, and perform password cracking to demonstrate real-world security risks.
+![Kali Linux](https://img.shields.io/badge/Kali-Linux-268BEE?style=for-the-badge&logo=kalilinux&logoColor=white)
+![Target](https://img.shields.io/badge/Target-Dripping%20Blues-red?style=for-the-badge)
+![Nmap](https://img.shields.io/badge/Nmap-Network%20Scanner-blue?style=for-the-badge)
+![FTP](https://img.shields.io/badge/FTP-Enumeration-orange?style=for-the-badge)
+![Status](https://img.shields.io/badge/Status-Completed-brightgreen?style=for-the-badge)
+![Level](https://img.shields.io/badge/Level-Beginner--Intermediate-blueviolet?style=for-the-badge)
 
----
+<a href="https://github.com/abhiramyadav03">
+<img src="https://img.shields.io/badge/GitHub-abhiramyadav03-181717?style=for-the-badge&logo=github"/>
+</a>
 
-## 🎯 Objectives
+<a href="https://www.linkedin.com/in/rapothulaabhiram/">
+<img src="https://img.shields.io/badge/LinkedIn-Abhiram%20Rapothula-0A66C2?style=for-the-badge&logo=linkedin"/>
+</a>
 
-- Discover live hosts in the network  
-- Identify open ports and services  
-- Exploit misconfigured FTP service  
-- Retrieve sensitive files  
-- Crack password-protected ZIP files  
-- Analyze security weaknesses  
-
----
-
-## 🛠 Tools Used
-
-- Kali Linux  
-- Nmap  
-- Netdiscover  
-- FTP Client  
-- zip2john  
-- John the Ripper  
+</div>
 
 ---
 
-## 🔎 Step-by-Step Methodology
+# 📖 Overview
 
-### 1️⃣ Identify Live Hosts
+The **Dripping Blues** machine is a beginner-friendly penetration testing lab designed to simulate a real-world attack against a vulnerable Linux server.
 
-```bash
-netdiscover -r 192.168.26.0/24
+This project demonstrates a structured penetration testing methodology beginning with reconnaissance, host discovery, service enumeration, vulnerability identification, exploitation, password cracking, sensitive file discovery, and post-exploitation analysis.
+
+The assessment follows industry-standard penetration testing practices while documenting each phase of the attack lifecycle and highlighting the associated security risks.
+
+---
+
+# 🎯 Objectives
+
+- Discover live hosts
+- Perform network reconnaissance
+- Identify open ports
+- Enumerate network services
+- Analyze FTP service
+- Retrieve exposed files
+- Crack password-protected ZIP archive
+- Identify sensitive information
+- Demonstrate exploitation workflow
+- Document security findings
+
+---
+
+# 📑 Table of Contents
+
+- Overview
+- Objectives
+- Lab Environment
+- Tools Used
+- Attack Methodology
+- Reconnaissance
+- Network Enumeration
+- FTP Enumeration
+- Password Cracking
+- Sensitive File Discovery
+- Security Findings
+- MITRE ATT&CK Mapping
+- Results
+- Screenshot Gallery
+- Skills Demonstrated
+- Learning Outcomes
+- References
+- License
+- Author
+
+---
+
+# 🖥️ Lab Environment
+
+| Component | Details |
+|-----------|----------|
+| Operating System | Kali Linux |
+| Target Machine | Dripping Blues |
+| Virtualization | VMware Workstation |
+| Network | NAT |
+| Attack Machine | Kali Linux |
+| Target OS | Linux |
+
+---
+
+# 🛠️ Tools Used
+
+| Tool | Purpose |
+|------|---------|
+| Nmap | Host discovery & port scanning |
+| FTP Client | File retrieval |
+| zip2john | ZIP hash extraction |
+| John the Ripper | Password cracking |
+| Linux Terminal | Enumeration |
+| VMware Workstation | Virtual lab |
+
+---
+
+# 🗺️ Attack Methodology
+
+```
+Target Discovery
+
+      │
+
+      ▼
+
+Host Identification
+
+      │
+
+      ▼
+
+Port Scanning
+
+      │
+
+      ▼
+
+Service Enumeration
+
+      │
+
+      ▼
+
+FTP Enumeration
+
+      │
+
+      ▼
+
+File Discovery
+
+      │
+
+      ▼
+
+Password Cracking
+
+      │
+
+      ▼
+
+Sensitive Information Collection
+
+      │
+
+      ▼
+
+Security Assessment
 ```
 
-Used to detect active devices in the local network.
+---
+
+# 🌐 Reconnaissance
+
+The first phase involved identifying the target machine within the local network.
+
+### Activities Performed
+
+- Host discovery
+- IP identification
+- Network validation
+- Connectivity testing
+
+### Objective
+
+Locate the vulnerable machine before beginning enumeration.
 
 ---
 
-### 2️⃣ Scan All Open Ports
+# 🔎 Network Enumeration
+
+After identifying the target, Nmap was used to enumerate exposed network services.
+
+### Scan Performed
 
 ```bash
-nmap -p- 192.168.26.133
+nmap -sV -sC <Target-IP>
 ```
 
-Scanned all 65,535 TCP ports to identify running services.
+### Information Gathered
 
-**Discovered Services:**
-- FTP
-- SSH
-- HTTP
+- Open TCP ports
+- Running services
+- Service versions
+- Default NSE scripts
+- Banner information
+
+### Purpose
+
+Identify potential attack vectors exposed by the target.
 
 ---
 
-### 3️⃣ Exploit Anonymous FTP Access
+# 📡 Service Discovery
+
+The Nmap scan identified several services available on the target.
+
+| Service | Purpose |
+|----------|---------|
+| FTP | File Transfer |
+| SSH | Remote Access |
+| HTTP | Web Service |
+
+Each discovered service was analyzed to determine whether it could be leveraged during the assessment.
+
+---
+
+# 📂 FTP Enumeration
+
+FTP enumeration was performed to determine whether anonymous access or exposed files were available.
+
+### Activities
+
+- Connected to FTP
+- Listed available files
+- Downloaded accessible content
+- Reviewed directory structure
+
+### Findings
+
+Sensitive files were successfully retrieved from the FTP server for further investigation.
+
+---
+
+# 🔐 Password Cracking
+
+One of the downloaded files contained a password-protected ZIP archive.
+
+The following workflow was used:
+
+### Step 1
+
+Extract the ZIP password hash.
 
 ```bash
-ftp 192.168.26.133
+zip2john secret.zip > hash.txt
 ```
 
-Anonymous login was enabled, allowing file access without authentication.
+### Step 2
 
----
-
-### 4️⃣ Download Sensitive ZIP File
+Crack the password using John the Ripper.
 
 ```bash
-get respectmydrip.zip
+john hash.txt
 ```
 
-Downloaded ZIP file from target system.
+### Objective
+
+Recover the archive password and access the protected contents.
 
 ---
 
-### 5️⃣ Extract ZIP Hash
+# 📁 Sensitive File Analysis
 
-```bash
-zip2john respectmydrip.zip > drip.hash
+After extracting the archive, the recovered files were analyzed for useful information.
+
+Items reviewed included:
+
+- Credentials
+- Notes
+- Configuration files
+- User information
+- Potential attack paths
+
+The discovered information assisted in understanding the overall security posture of the target.
+
+---
+
+# 🛡️ MITRE ATT&CK Mapping
+
+| Technique | Description |
+|-----------|-------------|
+| T1595 | Active Scanning |
+| T1046 | Network Service Discovery |
+| T1083 | File and Directory Discovery |
+| T1003 | Credential Access |
+| T1110 | Password Cracking |
+| T1078 | Valid Accounts |
+
+---
+
+# 🚨 Security Findings
+
+The penetration test revealed several security weaknesses that could be exploited by an attacker.
+
+## Key Findings
+
+| Finding | Risk |
+|----------|------|
+| FTP Service Exposed | Medium |
+| Sensitive Files Accessible | High |
+| Password-Protected ZIP Archive | Medium |
+| Weak Password | High |
+| Information Disclosure | High |
+
+---
+
+## Risk Assessment
+
+| Category | Severity |
+|-----------|----------|
+| Confidentiality | High |
+| Integrity | Medium |
+| Availability | Low |
+
+---
+
+# 📊 Results
+
+The assessment successfully demonstrated the complete penetration testing lifecycle.
+
+### Reconnaissance
+
+✅ Target identified
+
+---
+
+### Enumeration
+
+✅ Services discovered
+
+---
+
+### FTP Enumeration
+
+✅ Files successfully downloaded
+
+---
+
+### Password Cracking
+
+✅ ZIP password recovered
+
+---
+
+### Sensitive File Discovery
+
+✅ Confidential information extracted
+
+---
+
+### Documentation
+
+✅ Findings documented
+
+---
+
+# 📸 Screenshot Gallery
+
+## Target Discovery
+
+```text
+01-target-discovery.png
 ```
 
-Converted ZIP password into crackable hash format.
-
 ---
 
-### 6️⃣ Crack ZIP Password
+## Nmap Scan
 
-```bash
-john drip.hash --wordlist=/usr/share/wordlists/rockyou.txt
+```text
+02-nmap-scan.png
 ```
 
-Performed dictionary attack using common wordlist.
-
-Password successfully cracked.
-
 ---
 
-### 7️⃣ Crack Second ZIP File
+## FTP Enumeration
 
-```bash
-zip2john secret.zip > secret.hash
-john secret.hash --wordlist=/usr/share/wordlists/rockyou.txt
+```text
+03-ftp-enumeration.png
 ```
 
-Second ZIP password cracked successfully.
-
 ---
 
-### 8️⃣ Final Verification
+## Downloaded Files
 
-```bash
-john --show secret.hash
+```text
+04-downloaded-files.png
 ```
 
-Displayed cracked password for confirmation.
+---
+
+## ZIP Password Cracking
+
+```text
+05-john-the-ripper.png
+```
 
 ---
 
-## 🚨 Vulnerabilities Identified
+## Extracted Sensitive Files
 
-| Service | Issue | Risk Level |
-|----------|--------|------------|
-| FTP | Anonymous login enabled | High |
-| File Security | Weak password protection | High |
-| Monitoring | No brute-force detection | Medium |
+```text
+06-sensitive-files.png
+```
 
 ---
 
-## 🛡 Security Risks
+# 💡 Skills Demonstrated
 
-The vulnerable system allowed:
-
-- Unauthorized file access  
-- Sensitive file retrieval  
-- Password cracking using common wordlists  
-- Exposure due to poor service configuration  
-
-If deployed in production, this could lead to full data compromise.
-
----
-
-## 🔐 Mitigation Recommendations
-
-- Disable anonymous FTP access  
-- Enforce strong password policies  
-- Monitor abnormal file downloads  
-- Implement brute-force detection mechanisms  
-- Regularly audit and patch services  
+- Penetration Testing
+- Network Enumeration
+- Nmap Scanning
+- FTP Enumeration
+- Password Cracking
+- John the Ripper
+- Linux Enumeration
+- File Analysis
+- Security Assessment
+- Documentation
+- Reporting
 
 ---
 
-## 📊 Skills Demonstrated
+# 🎓 Learning Outcomes
 
-✔ Network Discovery  
-✔ Full Port Scanning  
-✔ Service Enumeration  
-✔ FTP Exploitation  
-✔ Hash Extraction  
-✔ Password Cracking  
-✔ Risk Assessment & Reporting  
+After completing this project, I gained practical experience in:
+
+- Performing network reconnaissance.
+- Enumerating exposed services.
+- Identifying vulnerable network services.
+- Downloading files from exposed FTP servers.
+- Extracting password hashes.
+- Cracking passwords using John the Ripper.
+- Analyzing recovered files.
+- Documenting penetration testing findings.
+- Following a structured penetration testing methodology.
 
 ---
 
-## 📌 Conclusion
+# 🚀 Future Improvements
 
-The Dripping Blues machine was successfully compromised due to insecure service configuration and weak password protection.
+Potential enhancements include:
 
-This project highlights the importance of secure service configuration, monitoring, and strong authentication practices.
+- Perform full vulnerability scanning before exploitation.
+- Automate enumeration using Bash or Python.
+- Integrate Nmap NSE scripts for deeper analysis.
+- Document CVSS scores for identified weaknesses.
+- Map findings to CIS Controls.
+- Include remediation recommendations for each finding.
 
-All testing was performed in a controlled lab environment.
+---
+
+# 📚 References
+
+- Nmap Documentation  
+  https://nmap.org/book/
+
+- John the Ripper Documentation  
+  https://www.openwall.com/john/
+
+- MITRE ATT&CK Framework  
+  https://attack.mitre.org/
+
+- OWASP Web Security Testing Guide  
+  https://owasp.org/www-project-web-security-testing-guide/
+
+- PTES – Penetration Testing Execution Standard  
+  http://www.pentest-standard.org/
+
+---
+
+# 📄 License
+
+This project is intended for educational and cybersecurity learning purposes only.
+
+The activities documented in this repository were performed in a controlled lab environment.
+
+Do not attempt these techniques against systems you do not own or have explicit permission to test.
+
+---
+
+# 👨‍💻 Author
+
+**Abhiram Rapothula**
+
+🎓 B.Tech – Computer Science & Engineering (Cybersecurity)
+
+📍 Hyderabad, Telangana, India
+
+### Connect with Me
+
+- GitHub: https://github.com/abhiramyadav03
+- LinkedIn: https://www.linkedin.com/in/rapothulaabhiram/
+- TryHackMe: https://tryhackme.com/p/rapothula1907
+
+---
+
+<div align="center">
+
+## ⭐ If you found this project useful, consider giving it a Star!
+
+**Hack Responsibly • Learn Continuously • Secure Everything 🔐**
+
+</div>
